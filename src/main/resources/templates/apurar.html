@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Apurar</title></head>
+<body>
+<h2>Apuração</h2>
+<table border="1">
+  <thead><tr><th>Restaurante</th><th>Votos</th></tr></thead>
+  <tbody>
+  <tr th:each="r : ${apuracao}">
+    <td th:text="${r.nome}">Nome</td>
+    <td th:text="${r.votos}">0</td>
+  </tr>
+  </tbody>
+</table>
+<p><a th:href="@{/votos}">Voltar</a></p>
+</body>
+</html>
