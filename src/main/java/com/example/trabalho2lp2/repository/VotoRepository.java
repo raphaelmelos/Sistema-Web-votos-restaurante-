@@ -5,15 +5,21 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import java.time.LocalDate;
 import java.util.List;
-
+/**
+Classe VotoRepository extends jpaRepository
+ */
 public interface VotoRepository extends JpaRepository<Voto, Integer> {
     boolean existsByFuncionarioNomeIgnoreCaseAndDataVoto(String nome, LocalDate dataVoto);
 
-    // Projeção simples para apuração: restaurante nome + contagem
+    /** metodo que imprimi os votos de um restaurante de forma estruturada
+     */
     interface VotosPorRestaurante {
         String getNome();
         Long getVotos();
     }
+    /**
+    Query para mostrar restaurantes agrupados por nome e votos de forma decrescente
+     */
 
     @Query("SELECT r.nome as nome, COUNT(v) as votos " +
             "FROM Voto v JOIN v.restaurante r " +
